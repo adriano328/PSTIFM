@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TextFormField(
                     decoration: InputDecoration(
                       isDense: true,
-                      contentPadding: EdgeInsets.fromLTRB(7, 15, 10, 5),
+                      contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0)),
                       labelText: 'Nome Completo:',
@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TextFormField(
                     decoration: InputDecoration(
                       isDense: true,
-                      contentPadding: EdgeInsets.fromLTRB(7, 15, 10, 5),
+                      contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0)),
                       labelText: 'E-mail:',
@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TextFormField(
                     decoration: InputDecoration(
                       isDense: true,
-                      contentPadding: EdgeInsets.fromLTRB(7, 15, 10, 5),
+                      contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0)),
                       labelText: 'Telefone:',
@@ -133,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TextFormField(
                     decoration: InputDecoration(
                       isDense: true,
-                      contentPadding: EdgeInsets.fromLTRB(7, 15, 10, 5),
+                      contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0)),
                       labelText: 'Celular:',
@@ -155,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TextFormField(
                     decoration: InputDecoration(
                       isDense: true,
-                      contentPadding: EdgeInsets.fromLTRB(7, 15, 10, 5),
+                      contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0)),
                       labelText: 'Endereço:',
@@ -177,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TextFormField(
                     decoration: InputDecoration(
                       isDense: true,
-                      contentPadding: EdgeInsets.fromLTRB(7, 15, 10, 5),
+                      contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0)),
                       labelText: 'Senha:',
@@ -199,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TextFormField(
                     decoration: InputDecoration(
                       isDense: true,
-                      contentPadding: EdgeInsets.fromLTRB(7, 15, 10, 5),
+                      contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0)),
                       labelText: 'Confirmar:',
@@ -215,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
                   Container(
                     decoration: BoxDecoration(
