@@ -15,7 +15,7 @@ class _formUsersState extends State<formUsers> {
         primarySwatch: Colors.purple,
       ),
       title: "FormValidation",
-      home: formUsers(),
+      home: MyHomePage(),
     );
   }
 }
@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cadastro Usúario"),
+        title: Text("Cadastro"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -215,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
                   Container(
                     decoration: BoxDecoration(

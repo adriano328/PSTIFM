@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_select/smart_select.dart';
 
 void main() => runApp(formUsersProfessional());
 
@@ -16,7 +15,7 @@ class _formUsersProfessionalState extends State<formUsersProfessional> {
         primarySwatch: Colors.purple,
       ),
       title: "FormValidation",
-      home: formUsersProfessional(),
+      home: MyHomePage(),
     );
   }
 }
@@ -44,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cadastro"),
+        title: Text("Cadastro Profissional"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -215,20 +214,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       });
                     },
                   ),
-                  Container(
-                    height: 50,
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Serviço Oferecidos: ",
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  ),
-                  Container(
-                    child: Row(),
-                  ),
-
                   SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
                   Container(
                     decoration: BoxDecoration(
