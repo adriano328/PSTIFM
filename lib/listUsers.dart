@@ -1,6 +1,6 @@
 import 'dart:math';
 
-//ads
+
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
