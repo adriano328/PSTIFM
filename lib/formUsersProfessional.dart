@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(formUsers());
 
-class formUsers extends StatefulWidget {
+
+void main() => runApp(formUsersProfessional());
+
+class formUsersProfessional extends StatefulWidget {
   @override
-  _formUsersState createState() => _formUsersState();
+  _formUsersProfessionalState createState() => _formUsersProfessionalState();
 }
 
-
-
-class _formUsersState extends State<formUsers> {
+class _formUsersProfessionalState extends State<formUsersProfessional> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cadastro"),
+        title: Text("Cadastro Profissional"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
