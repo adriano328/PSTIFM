@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_application_1/homeList.dart';
+import 'package:flutter_application_1/perfilUsuario.dart';
 
 void main() {
   runApp(const listUser());
@@ -32,173 +34,28 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _paginaAtual = 0;
+
+List<Widget> _paginas = [
+  HomeList(),
+  PerfilUser()
+];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Galeria'),
-      ),
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: GridView(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.blueGrey.shade600),
-                child: Column(
-                  children: [
-                    Icon(
-                      Icons.account_circle_sharp,
-                      size: 70,
-                      color: Colors.white,
-                    ),
-                    Icon(
-                      Icons.star,
-                      size: 25,
-                      color: Colors.yellowAccent,
-                    ),
-                    Text(
-                      'Usuário',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                    new Baseline(
-                      baseline: 40,
-                      baselineType: TextBaseline.alphabetic,
-                      child: new Text(
-                        'Description',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.blueGrey.shade600),
-                child: Column(
-                  children: [
-                    Icon(
-                      Icons.account_circle_sharp,
-                      size: 70,
-                      color: Colors.white,
-                    ),
-                    Icon(
-                      Icons.star,
-                      size: 25,
-                      color: Colors.yellowAccent,
-                    ),
-                    Text(
-                      'Usuário',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                    new Baseline(
-                      baseline: 40,
-                      baselineType: TextBaseline.alphabetic,
-                      child: new Text(
-                        'Description',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.blueGrey.shade600),
-                child: Column(
-                  children: [
-                    Icon(
-                      Icons.account_circle_sharp,
-                      size: 70,
-                      color: Colors.white,
-                    ),
-                    Icon(
-                      Icons.star,
-                      size: 25,
-                      color: Colors.yellowAccent,
-                    ),
-                    Text(
-                      'Usuário',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                    new Baseline(
-                      baseline: 40,
-                      baselineType: TextBaseline.alphabetic,
-                      child: new Text(
-                        'Description',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.blueGrey.shade600),
-                child: Column(
-                  children: [
-                    Icon(
-                      Icons.account_circle_sharp,
-                      size: 70,
-                      color: Colors.white,
-                    ),
-                    Icon(
-                      Icons.star,
-                      size: 25,
-                      color: Colors.yellowAccent,
-                    ),
-                    Text(
-                      'Usuário',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                    new Baseline(
-                      baseline: 40,
-                      baselineType: TextBaseline.alphabetic,
-                      child: new Text(
-                        'Description',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 20.0,
-              crossAxisSpacing: 20.0,
-            ),
-          ),
-        ),
+      body: _paginas[_paginaAtual] ,
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          setState(() {
+            _paginaAtual = index;
+          });
+        },
+        currentIndex: _paginaAtual,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle_sharp), label: "Perfil"),
+        ],
       ),
     );
   }
