@@ -57,6 +57,7 @@ List<Widget> _paginas = [
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle_sharp), label: "Perfil"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profissional"),
         ],
       ),
     );
