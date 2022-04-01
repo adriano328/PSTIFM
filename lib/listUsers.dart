@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_application_1/homeList.dart';
+import 'package:flutter_application_1/perfilServidor.dart';
 import 'package:flutter_application_1/perfilUsuario.dart';
 
 void main() {
@@ -40,7 +41,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
 List<Widget> _paginas = [
   HomeList(),
-  PerfilUser()
+  PerfilUser(),
+  PerfilServidor()
 ];
 
   @override
