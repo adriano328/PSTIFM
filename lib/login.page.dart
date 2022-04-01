@@ -133,7 +133,8 @@ class LoginPage extends StatelessWidget {
                     onPressed: () => {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => formUsers()),
+                        MaterialPageRoute(
+                            builder: (context) => formUsersProfessional()),
                       )
                     },
                   ),
@@ -146,8 +147,7 @@ class LoginPage extends StatelessWidget {
                     onPressed: () => {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => formUsersProfessional()),
+                        MaterialPageRoute(builder: (context) => formUsers()),
                       )
                     },
                   )
