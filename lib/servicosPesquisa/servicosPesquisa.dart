@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeList extends StatelessWidget {
-  const HomeList({Key? key}) : super(key: key);
+class ServicosPesquisa extends StatelessWidget {
+  const ServicosPesquisa({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

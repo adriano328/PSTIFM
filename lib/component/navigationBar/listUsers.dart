@@ -5,9 +5,9 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter_application_1/homeList.dart';
-import 'package:flutter_application_1/perfilServidor.dart';
-import 'package:flutter_application_1/perfilUsuario.dart';
+import 'package:flutter_application_1/home/prestador/perfilServidor.dart';
+import 'package:flutter_application_1/home/usuario/perfilUsuario.dart';
+import 'package:flutter_application_1/servicosPesquisa/ServicosPesquisa.dart';
 
 void main() {
   runApp(const listUser());
@@ -40,9 +40,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _paginaAtual = 0;
 
 List<Widget> _paginas = [
-  HomeList(),
   PerfilUser(),
-  PerfilServidor()
+  PerfilServidor(),
+  ServicosPesquisa(),
 ];
 
   @override
@@ -57,9 +57,9 @@ List<Widget> _paginas = [
         },
         currentIndex: _paginaAtual,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle_sharp), label: "Perfil"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profissional"),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Serviços"),
         ],
       ),
     );
