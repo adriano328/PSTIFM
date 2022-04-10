@@ -10,11 +10,11 @@ import 'package:flutter_application_1/home/usuario/perfilUsuario.dart';
 import 'package:flutter_application_1/servicosPesquisa/ServicosPesquisa.dart';
 
 void main() {
-  runApp(const listUser());
+  runApp(const NavigationAppComponent());
 }
 
-class listUser extends StatelessWidget {
-  const listUser({Key? key}) : super(key: key);
+class NavigationAppComponent extends StatelessWidget {
+  const NavigationAppComponent({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
