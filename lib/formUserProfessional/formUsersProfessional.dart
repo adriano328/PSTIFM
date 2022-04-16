@@ -5,19 +5,7 @@ import 'package:flutter_application_1/formUserProfessional/data.dart';
 import 'package:flutter_application_1/formUserProfessional/notifiers.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider<SingleNotifier>(
-        create: (_) => SingleNotifier(),
-      ),
-      ChangeNotifierProvider<MultipleNotifier>(
-        create: (_) => MultipleNotifier([]),
-      )
-    ],
-    child: formUsersProfessional(),
-  ));
-}
+void main() => runApp(formUsersProfessional());
 
 class formUsersProfessional extends StatefulWidget {
   @override
