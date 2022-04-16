@@ -1,8 +1,23 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/formUserProfessional/data.dart';
+import 'package:flutter_application_1/formUserProfessional/notifiers.dart';
+import 'package:provider/provider.dart';
 
-
-
-void main() => runApp(formUsersProfessional());
+void main() {
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<SingleNotifier>(
+        create: (_) => SingleNotifier(),
+      ),
+      ChangeNotifierProvider<MultipleNotifier>(
+        create: (_) => MultipleNotifier([]),
+      )
+    ],
+    child: formUsersProfessional(),
+  ));
+}
 
 class formUsersProfessional extends StatefulWidget {
   @override
@@ -40,6 +55,39 @@ class _MyHomePageState extends State<MyHomePage> {
   void _submit() {
     // you can write your own code according to whatever you want to submit;
   }
+
+  _showMultipleChoiceDialog(BuildContext context) => showDialog(
+      context: context,
+      builder: (context) {
+        final _multipleNotifier = Provider.of<MultipleNotifier>(context);
+        return AlertDialog(
+          title: Text('Serviços oferecidos'),
+          content: SingleChildScrollView(
+            child: Container(
+                width: double.infinity,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: countries
+                      .map((e) => CheckboxListTile(
+                            title: Text(e),
+                            onChanged: (value) {
+                              value!
+                                  ? _multipleNotifier.addItem(e)
+                                  : _multipleNotifier.removeItem(e);
+                            },
+                            value: _multipleNotifier.isHaveItem(e),
+                          ))
+                      .toList(),
+                )),
+          ),
+          actions: [
+            FlatButton(
+              child: Text('Yes'),
+              onPressed: () => Navigator.of(context).pop(),
+            )
+          ],
+        );
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
                     ),
                     keyboardType: TextInputType.emailAddress,
-                    obscureText: true,
+                    obscureText: false,
                     onFieldSubmitted: (value) {
                       setState(() {
                         email = value;
@@ -121,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
                     ),
                     keyboardType: TextInputType.text,
-                    obscureText: true,
+                    obscureText: false,
                     onFieldSubmitted: (value) {
                       setState(() {
                         telefone = value;
@@ -143,7 +191,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
                     ),
                     keyboardType: TextInputType.text,
-                    obscureText: true,
+                    obscureText: false,
                     onFieldSubmitted: (value) {
                       setState(() {
                         celular = value;
@@ -165,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
                     ),
                     keyboardType: TextInputType.text,
-                    obscureText: true,
+                    obscureText: false,
                     onFieldSubmitted: (value) {
                       setState(() {
                         endereco = value;
@@ -220,6 +268,24 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 20,
                   ),
                   Container(
+                    margin: const EdgeInsets.only(left: 0, right: 300.0),
+                    decoration: BoxDecoration(
+                        color: Colors.purple,
+                        borderRadius: BorderRadius.all(Radius.circular(5))),
+                    child: TextButton(
+                      child: Center(
+                        child: Text(
+                          "Selecionar Serviços",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      onPressed: () {
+                        _showMultipleChoiceDialog(context);
+                      },
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20),
                     decoration: BoxDecoration(
                         color: Colors.purple,
                         borderRadius: BorderRadius.all(Radius.circular(5))),
