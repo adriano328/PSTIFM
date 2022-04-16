@@ -52,6 +52,11 @@ class _MyHomePageState extends State<MyHomePage> {
   String senha = "";
   String confirmar = "";
 
+  double _volume = 0.0;
+
+  final ButtonStyle style =
+      ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+
   void _submit() {
     // you can write your own code according to whatever you want to submit;
   }
@@ -198,6 +203,53 @@ class _MyHomePageState extends State<MyHomePage> {
                       });
                     },
                   ),
+                  SizedBox(
+                    height: 8,
+                  ),
+
+                  GridView.count(
+                      shrinkWrap: true,
+                      // Create a grid with 2 columns. If you change the scrollDirection to
+                      // horizontal, this produces 2 rows.
+                      crossAxisCount: 2,
+                      childAspectRatio: (1 / .2),
+                      // Generate 100 widgets that display their index in the List.
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              isDense: true,
+                              contentPadding: EdgeInsets.all(10),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                              labelText: 'Cep:',
+                              labelStyle: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.w400),
+                            ),
+                            keyboardType: TextInputType.text,
+                            obscureText: false,
+                            onFieldSubmitted: (value) {
+                              setState(() {
+                                endereco = value;
+                              });
+                            },
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(
+                              left: 17, right: 160, bottom: 7, top: 10),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Icon(
+                              Icons.search,
+                              color: Colors.white,
+                              size: 25,
+                            ),
+                          ),
+                        ),
+                      ]),
+
                   SizedBox(
                     height: 8,
                   ),
