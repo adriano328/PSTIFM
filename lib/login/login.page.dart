@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/formUsers.dart';
 import 'package:flutter_application_1/formUserProfessional/formUsersProfessional.dart';
+import 'package:flutter_application_1/formUsers.dart';
+
 import 'package:flutter_application_1/navigationScreenController/navigationAppComponent.dart';
 import 'package:flutter_application_1/home/usuario/perfilUsuario.dart';
 import 'package:flutter_application_1/main.dart';
@@ -87,7 +88,8 @@ class LoginPage extends StatelessWidget {
                   onPressed: () => {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => NavigationAppComponent()),
+                      MaterialPageRoute(
+                          builder: (context) => NavigationAppComponent()),
                     )
                   },
                 ),
@@ -134,8 +136,7 @@ class LoginPage extends StatelessWidget {
                     onPressed: () => {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => formUsersProfessional()),
+                        MaterialPageRoute(builder: (context) => formUsers()),
                       )
                     },
                   ),
@@ -148,7 +149,8 @@ class LoginPage extends StatelessWidget {
                     onPressed: () => {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => formUsers()),
+                        MaterialPageRoute(
+                            builder: (context) => formUsersProfessional()),
                       )
                     },
                   )
