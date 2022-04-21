@@ -1,11 +1,29 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/formUserProfessional/data.dart';
 import 'package:flutter_application_1/formUserProfessional/notifiers.dart';
+import 'package:flutter_application_1/shared/interface/buscaCep.dart';
+import 'package:flutter_application_1/shared/services/buscaCepService.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
-void main() => runApp(formUsersProfessional());
+void main() {
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<SingleNotifier>(
+        create: (_) => SingleNotifier(),
+      ),
+      ChangeNotifierProvider<MultipleNotifier>(
+        create: (_) => MultipleNotifier([]),
+      )
+    ],
+    child: formUsersProfessional(),
+  ));
+}
 
 class formUsersProfessional extends StatefulWidget {
   @override
@@ -39,8 +57,23 @@ class _MyHomePageState extends State<MyHomePage> {
   String endereco = "";
   String senha = "";
   String confirmar = "";
-
   double _volume = 0.0;
+
+  BuscaCep? buscaCep;
+
+  TextEditingController? _enderecoController;
+
+  _getDadosCep(String cep) {
+    API.getDadosCep(cep).then((response) {
+      buscaCep = BuscaCep.fromJson(json.decode(response.body));
+
+      setState(() {
+        _enderecoController = TextEditingController(
+            text:
+                "Rua ${buscaCep!.logradouro}, Bairro ${buscaCep!.bairro}, Cidade ${buscaCep!.localidade}, N°: ");
+      });
+    });
+  }
 
   final ButtonStyle style =
       ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
@@ -147,53 +180,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       });
                     },
                   ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  //TextBox - Nome Telefone
-                  TextFormField(
-                    decoration: InputDecoration(
-                      isDense: true,
-                      contentPadding: EdgeInsets.all(10),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0)),
-                      labelText: 'Telefone:',
-                      labelStyle:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
-                    ),
-                    keyboardType: TextInputType.text,
-                    obscureText: false,
-                    onFieldSubmitted: (value) {
-                      setState(() {
-                        telefone = value;
-                      });
-                    },
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  //TextBox - Nome Celular
-                  TextFormField(
-                    decoration: InputDecoration(
-                      isDense: true,
-                      contentPadding: EdgeInsets.all(10),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0)),
-                      labelText: 'Celular:',
-                      labelStyle:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
-                    ),
-                    keyboardType: TextInputType.text,
-                    obscureText: false,
-                    onFieldSubmitted: (value) {
-                      setState(() {
-                        celular = value;
-                      });
-                    },
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
 
                   GridView.count(
                       shrinkWrap: true,
@@ -206,6 +192,61 @@ class _MyHomePageState extends State<MyHomePage> {
                         Container(
                           margin: const EdgeInsets.only(top: 10),
                           child: TextFormField(
+                            decoration: InputDecoration(
+                              isDense: true,
+                              contentPadding: EdgeInsets.all(10),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                              labelText: 'Telefone:',
+                              labelStyle: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.w400),
+                            ),
+                            keyboardType: TextInputType.text,
+                            obscureText: false,
+                            onFieldSubmitted: (value) {
+                              setState(() {
+                                telefone = value;
+                              });
+                            },
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 5, top: 10),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              isDense: true,
+                              contentPadding: EdgeInsets.all(10),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0)),
+                              labelText: 'Celular:',
+                              labelStyle: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.w400),
+                            ),
+                            keyboardType: TextInputType.text,
+                            obscureText: false,
+                            onFieldSubmitted: (value) {
+                              setState(() {
+                                celular = value;
+                              });
+                            },
+                          ),
+                        ),
+                      ]),
+
+                  GridView.count(
+                      shrinkWrap: true,
+                      // Create a grid with 2 columns. If you change the scrollDirection to
+                      // horizontal, this produces 2 rows.
+                      crossAxisCount: 2,
+                      childAspectRatio: (1 / .2),
+                      // Generate 100 widgets that display their index in the List.
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          child: TextFormField(
+                            onChanged: (String text) {
+                              endereco = text;
+                            },
                             decoration: InputDecoration(
                               isDense: true,
                               contentPadding: EdgeInsets.all(10),
@@ -225,10 +266,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                         Container(
-                          margin: const EdgeInsets.only(
-                              left: 17, right: 160, bottom: 7, top: 10),
+                          margin: const EdgeInsets.only(left: 5, top: 10),
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              _getDadosCep(endereco);
+                            },
                             child: Icon(
                               Icons.search,
                               color: Colors.white,
@@ -243,6 +285,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   //TextBox - Nome Endereço
                   TextFormField(
+                    controller: _enderecoController,
+                    style: TextStyle(fontSize: 12),
                     decoration: InputDecoration(
                       isDense: true,
                       contentPadding: EdgeInsets.all(10),
@@ -305,27 +349,29 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 0, right: 300.0),
-                    decoration: BoxDecoration(
-                        color: Colors.purple,
-                        borderRadius: BorderRadius.all(Radius.circular(5))),
-                    child: TextButton(
-                      child: Center(
-                        child: Text(
-                          "Selecionar Serviços",
-                          style: TextStyle(color: Colors.white),
-                        ),
+                      child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.purple),
                       ),
                       onPressed: () {
                         _showMultipleChoiceDialog(context);
                       },
+                      child: Text(
+                        'Selecionar Serviços',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
+                  )),
+                  SizedBox(
+                    height: 10,
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 20),
                     decoration: BoxDecoration(
                         color: Colors.purple,
                         borderRadius: BorderRadius.all(Radius.circular(5))),
