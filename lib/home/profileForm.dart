@@ -27,19 +27,13 @@ class profileForm extends StatelessWidget {
                     // Generate 100 widgets that display their index in the List.
 
                     children: [
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15.0),
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage('assets/cliente_icone.png'))),
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Text('Nouveautés'),
-                        ),
-                      ),
-                      Container(
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => formUsers()));
+                        },
                         child: Container(
                           height: 300,
                           width: double.infinity,
@@ -49,9 +43,32 @@ class profileForm extends StatelessWidget {
                                   fit: BoxFit.cover,
                                   image:
                                       AssetImage('assets/cliente_icone.png'))),
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 20),
-                            child: Text('Nouveautés'),
+                          child: Center(
+                            child: Text('Profissional'),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      formUsersProfessional()));
+                        },
+                        child: Container(
+                          child: Container(
+                            height: 300,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15.0),
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage(
+                                        'assets/profissional_icone.png'))),
+                            child: Center(
+                              child: Text('Profissional'),
+                            ),
                           ),
                         ),
                       )
