@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/formUserProfessional/formUsersProfessional.dart';
 import 'package:flutter_application_1/formUsers.dart';
+import 'package:flutter_application_1/home/profileForm.dart';
 
 import 'package:flutter_application_1/navigationScreenController/navigationAppComponent.dart';
 import 'package:flutter_application_1/home/usuario/perfilUsuario.dart';
@@ -111,52 +112,30 @@ class LoginPage extends StatelessWidget {
                 onPressed: () {},
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
             Container(
-              height: 30,
+              height: 40,
               alignment: Alignment.center,
-              child: Text(
-                "Novo no Aplicativo?",
-                style: TextStyle(
-                  color: Color(0xFF9C27B0),
+              child: TextButton(
+                child: Text(
+                  "Novo no aplicativo? Clique Aqui! ",
+                  style: TextStyle(
+                    color: Colors.purple,
+                  ),
                 ),
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => profileForm()),
+                  )
+                },
               ),
             ),
             SizedBox(
               height: 15,
             ),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TextButton(
-                    child: Text(
-                      "Cliente",
-                      style: TextStyle(color: Colors.purple),
-                    ),
-                    onPressed: () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => formUsers()),
-                      )
-                    },
-                  ),
-                  Text("||"),
-                  TextButton(
-                    child: Text(
-                      "Profissional",
-                      style: TextStyle(color: Colors.purple),
-                    ),
-                    onPressed: () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => formUsersProfessional()),
-                      )
-                    },
-                  )
-                ],
-              ),
-            )
           ],
         ),
       ),
