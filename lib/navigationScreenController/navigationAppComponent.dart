@@ -50,6 +50,7 @@ List<Widget> _paginas = [
     return Scaffold(
       body: _paginas[_paginaAtual] ,
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.grey[300],
         onTap: (index) {
           setState(() {
             _paginaAtual = index;
