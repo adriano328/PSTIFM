@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           actions: [
             FlatButton(
-              child: Text('Yes'),
+              child: Text('OK'),
               onPressed: () => Navigator.of(context).pop(),
             )
           ],

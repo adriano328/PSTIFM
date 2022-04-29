@@ -1,9 +1,9 @@
 final List<String> countries = [
-  'United Kingdom',
-  'USA',
-  'Frances',
-  'Australia',
-  'Germany',
-  'India',
-  'Vietnam'
+  'Pedreiro',
+  'Encanador',
+  'Montador',
+  'Diarista',
+  'Pintor',
+  'Eletricista',
+  'Babá'
 ];
