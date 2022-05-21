@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/formUserProfessional/formUsersProfessional.dart';
 import 'package:flutter_application_1/formUsers.dart';
-import 'package:flutter_application_1/home/profileForm.dart';
-
-import 'package:flutter_application_1/navigationScreenController/navigationAppComponent.dart';
-import 'package:flutter_application_1/home/usuario/perfilUsuario.dart';
-import 'package:flutter_application_1/main.dart';
 
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           top: 0,
           left: 40,
           right: 40,
@@ -20,122 +14,83 @@ class LoginPage extends StatelessWidget {
         color: Colors.white,
         child: ListView(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               height: 60,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Container(
+            SizedBox(
               width: 100,
               height: 100,
               child: Image.asset('assets/google_logo.png'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             TextFormField(
+              decoration: InputDecoration(
+                isDense: true,
+                contentPadding: const EdgeInsets.all(15),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+                labelText: 'E-mail:',
+                labelStyle:
+                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+              ),
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                  labelText: "Usuário",
-                  labelStyle: TextStyle(
-                    color: Colors.black38,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18,
-                  )),
-              style: TextStyle(fontSize: 20),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              keyboardType: TextInputType.text,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: "Senha",
-                labelStyle: TextStyle(
-                  color: Colors.black38,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                ),
-              ),
-              style: TextStyle(fontSize: 10),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Container(
-              width: double.infinity,
-              height: 60,
-              decoration: BoxDecoration(
-                  color: Colors.purple,
-                  borderRadius: BorderRadius.all(Radius.circular(5))),
-              child: SizedBox(
-                child: TextButton(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "Logar",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                        textAlign: TextAlign.left,
-                      ),
-                    ],
-                  ),
-                  onPressed: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => NavigationAppComponent()),
-                    )
-                  },
-                ),
-              ),
-            ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Container(
-              height: 40,
-              alignment: Alignment.center,
-              child: TextButton(
-                child: Text(
-                  "Esqueceu a sua senha? Clique Aqui! ",
-                  style: TextStyle(
+            TextFormField(
+              decoration: InputDecoration(
+                isDense: true,
+                contentPadding: const EdgeInsets.all(15),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+                labelText: 'Senha:',
+                labelStyle:
+                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+              ),
+              obscureText: true,
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 35, right: 35),
+              child: Container(
+                decoration: BoxDecoration(
                     color: Colors.purple,
+                    borderRadius: BorderRadius.circular(10)),
+                child: TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Logar',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
-                onPressed: () {},
               ),
             ),
-            SizedBox(
+            TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'Esqueceu a sua senha? Clique Aqui',
+                  style: TextStyle(color: Colors.purple),
+                )),
+            const SizedBox(
               height: 10,
             ),
-            Container(
-              height: 40,
-              alignment: Alignment.center,
-              child: TextButton(
-                child: Text(
-                  "Novo no aplicativo? Clique Aqui! ",
-                  style: TextStyle(
-                    color: Colors.purple,
-                  ),
-                ),
-                onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => profileForm()),
-                  )
+            TextButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => formUsers()));
                 },
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
+                child: const Text(
+                  'Novo no aplicativo? Clique Aqui',
+                  style: TextStyle(color: Colors.purple),
+                ))
           ],
         ),
       ),
