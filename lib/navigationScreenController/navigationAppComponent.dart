@@ -1,10 +1,4 @@
-import 'dart:math';
-
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter_application_1/home/prestador/perfilServidor.dart';
 import 'package:flutter_application_1/home/usuario/perfilUsuario.dart';
 import 'package:flutter_application_1/servicosPesquisa/ServicosPesquisa.dart';
