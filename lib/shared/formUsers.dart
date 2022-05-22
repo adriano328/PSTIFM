@@ -21,16 +21,16 @@ void main() {
         create: (_) => MultipleNotifier([]),
       )
     ],
-    child: formUsersProfessional(),
+    child: formUsers(),
   ));
 }
 
-class formUsersProfessional extends StatefulWidget {
+class formUsers extends StatefulWidget {
   @override
-  _formUsersProfessionalState createState() => _formUsersProfessionalState();
+  _formUsersState createState() => _formUsersState();
 }
 
-class _formUsersProfessionalState extends State<formUsersProfessional> {
+class _formUsersState extends State<formUsers> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -149,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           borderRadius: BorderRadius.circular(10.0)),
                       labelText: 'Nome Completo:',
                       labelStyle:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                          TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
                     ),
                     keyboardType: TextInputType.text,
                     onFieldSubmitted: (value) {
@@ -170,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           borderRadius: BorderRadius.circular(10.0)),
                       labelText: 'E-mail:',
                       labelStyle:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                          TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
                     ),
                     keyboardType: TextInputType.emailAddress,
                     obscureText: false,
@@ -199,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   borderRadius: BorderRadius.circular(10.0)),
                               labelText: 'Telefone:',
                               labelStyle: TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.w400),
+                                  fontSize: 10, fontWeight: FontWeight.w400),
                             ),
                             keyboardType: TextInputType.text,
                             obscureText: false,
@@ -220,7 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   borderRadius: BorderRadius.circular(10.0)),
                               labelText: 'Celular:',
                               labelStyle: TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.w400),
+                                  fontSize: 10, fontWeight: FontWeight.w400),
                             ),
                             keyboardType: TextInputType.text,
                             obscureText: false,
@@ -254,7 +254,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   borderRadius: BorderRadius.circular(10.0)),
                               labelText: 'Cep:',
                               labelStyle: TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.w400),
+                                  fontSize: 10, fontWeight: FontWeight.w400),
                             ),
                             keyboardType: TextInputType.text,
                             obscureText: false,
@@ -297,7 +297,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           borderRadius: BorderRadius.circular(10.0)),
                       labelText: 'Endereço:',
                       labelStyle:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                          TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
                     ),
                     keyboardType: TextInputType.text,
                     obscureText: false,
@@ -322,7 +322,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 borderRadius: BorderRadius.circular(10.0)),
                             labelText: 'Senha:',
                             labelStyle: TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.w400),
+                                fontSize: 10, fontWeight: FontWeight.w400),
                           ),
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: true,
@@ -346,7 +346,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 borderRadius: BorderRadius.circular(10.0)),
                             labelText: 'Confirmar:',
                             labelStyle: TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.w400),
+                                fontSize: 10, fontWeight: FontWeight.w400),
                           ),
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: true,
@@ -359,41 +359,25 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
+
                   SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
-                  Container(
-                      child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.purple),
-                      ),
-                      onPressed: () {
-                        _showMultipleChoiceDialog(context);
-                      },
-                      child: Text(
-                        'Selecionar Serviços',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  )),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.purple,
-                        borderRadius: BorderRadius.all(Radius.circular(5))),
-                    child: TextButton(
-                      child: Center(
-                        child: Text(
-                          "Cadastrar",
-                          style: TextStyle(color: Colors.white),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 150, right: 150),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.purple,
+                          borderRadius: BorderRadius.all(Radius.circular(5))),
+                      child: TextButton(
+                        child: Center(
+                          child: Text(
+                            "Cadastrar",
+                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          ),
                         ),
+                        onPressed: () {},
                       ),
-                      onPressed: () {},
                     ),
                   )
                 ],
